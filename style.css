@@ -1,0 +1,378 @@
+/* Base & Font */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #001f1f; 
+    color: #ffffff;
+    direction: ltr;
+}
+
+/* --- Header Styling (Fixes for Contact and Logo Size) --- */
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px; 
+    z-index: 1000;
+    background-color: transparent;
+    box-sizing: border-box; /* التأكد من أن الـ padding لا يخرج عن الـ 100% عرض */
+    padding: 20px 50px; 
+    padding-top: 30px; 
+}
+
+.left-nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    position: absolute;
+    left: 50px;
+}
+
+.right-nav {
+    position: absolute;
+    right: 50px; /* ضمان أنها تبدأ على مسافة 50px من اليمين */
+}
+
+.main-header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+/* Logo Image Styling (Bigger size fix) */
+
+.logo-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 15px; /* رفع القيمة قليلاً لضمان أن اللوجو لا يلامس الحافة */
+}
+.logo-image {
+    height: 150px; /* زيادة حجم اللوجو بشكل كبير جداً */
+    width: auto;
+    filter: brightness(0) invert(1);
+    /* للتأكد من أن اللوجو مرئي، تأكد من أن الخلفية (lun-logo-placeholder.png) بيضاء أو شفافة */
+}
+.contact-btn {
+    padding: 5px 15px;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+/* --- Hero Section & Content (No Change) --- */
+
+.green-hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    padding-top: 80px; 
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+    z-index: 10;
+}
+
+/* --- Buttons Styling (Adjusted for new layout) --- */
+.buttons-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.green-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #00cc66;
+    color: #001f1f;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.video-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* محاذاة النص على اليسار */
+    line-height: 1;
+}
+
+.video-text-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.video-text-link.sub-text {
+    font-size: 0.8rem;
+    color: #cccccc;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* --- Product Image Styling (Confirmed Position) --- */
+
+.product-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    /* لتبدو الصورة وكأنها تبدأ على اليمين مباشرة وتأخذ حيزها */
+    padding-left: 50px; 
+}
+
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+    right: 0px; 
+    top: 50%; 
+    transform: translateY(-50%) scale(1.1);
+    z-index: 10;
+    /* إلغاء الفلتر لضمان ظهور الألوان الأصلية للساعة */
+    filter: none; 
+}
+
+/* --- Glowing Circles Animation (Re-Enabled) --- */
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.glowing-circle {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 80px 30px #00ff80; 
+    opacity: 0.5;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.circle-left {
+    top: 10%;
+    left: -100px;
+    width: 600px;
+    height: 600px;
+    animation: spin 30s linear infinite;
+    box-shadow: 0 0 100px 30px #00cc66;
+}
+
+.circle-right {
+    bottom: 0%;
+    right: -150px;
+    width: 800px;
+    height: 800px;
+    animation: spin 45s linear infinite reverse;
+    box-shadow: 0 0 150px 50px #00ff80;
+}
+
+/* --- Sequential Animations (Re-Enabled) --- */
+
+@keyframes slideUpFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Apply Animation to Elements */
+.animate-text, .animate-btn {
+    opacity: 0;
+    animation: slideUpFadeIn 0.8s ease-out forwards;
+}
+.animate-image, .animate-icon {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Sequential Delays (Confirmed) */
+.left-nav a:nth-child(1) { animation-delay: 0.1s; }
+.left-nav a:nth-child(2) { animation-delay: 0.2s; }
+.left-nav a:nth-child(3) { animation-delay: 0.3s; }
+.logo-center { animation-delay: 0.4s; }
+.right-nav .contact-btn { animation-delay: 0.5s; }
+
+.tagline { animation-delay: 0.8s; }
+.hero-content h1 { animation-delay: 1.1s; }
+.hero-content .description { animation-delay: 1.4s; }
+.buttons-row { animation-delay: 1.7s; }
+.product-image { animation-delay: 1.5s; }
+.bottom-text { animation-delay: 2.0s; }
+.next-slide { animation-delay: 2.2s; }
+
+/* --- Media Queries for Responsive Design (Mobile / Max Width: 768px) --- */
+
+/* --- Media Queries for Responsive Design (Mobile / Max Width: 768px) --- */
+
+@media (max-width: 768px) {
+    
+    /* Base Adjustments */
+    .green-hero {
+        /* زيادة الـ padding لضمان مسافة كافية عن الهيدر */
+        padding-top: 120px; 
+        height: auto; 
+        min-height: 100vh;
+    }
+    
+    /* 1. Header & Navigation Adjustments: ترتيب العناصر على سطرين أو ثلاثة */
+    .main-header {
+        padding: 10px 20px; 
+        flex-wrap: wrap; 
+        justify-content: space-between; 
+        align-items: center;
+    }
+    
+    /* Social Media (Left Corner) */
+    .left-nav {
+        position: static;
+        order: 1; 
+        margin-left: 0; 
+        /* المسافة بين العناصر داخل الـ nav */
+        gap: 15px; 
+    }
+
+    /* Contact Button (Right Corner) */
+    .right-nav {
+        position: static;
+        order: 2; /* بجوار السوشيال ميديا */
+        margin-left: auto; 
+        margin-right: 0;
+    }
+    
+    /* Logo (Center - Forced to a new line) */
+    .logo-center {
+        position: static; 
+        transform: none;
+        order: 3; /* وضع اللوجو في سطر جديد */
+        width: 100%; 
+        text-align: center;
+        margin-top: 10px; 
+    }
+    .logo-image {
+        height: 60px; /* تصغير حجم اللوجو ليتناسب مع الموبايل */
+        width: auto;
+    }
+    
+    /* 2. Hero Section Layout Change (Content stack) */
+    .container {
+        flex-direction: column; 
+        padding: 0 20px;
+    }
+
+    /* Image Area Adjustments */
+    .product-image-container {
+        order: 1; /* وضع الصورة في الأعلى */
+        width: 100%;
+        /* مسافة لمنع التصاق الصورة بالنص */
+        margin-bottom: 30px; 
+        height: 400px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .product-image {
+        position: static; /* إلغاء التموضع المطلق (Absolute) */
+        transform: scale(1); /* إلغاء التكبير */
+        right: auto;
+        top: auto;
+        max-width: 90%;
+        height: auto;
+        filter: none; /* التأكد من إلغاء الفلتر للألوان الأصلية */
+    }
+
+    /* Content Area (النص والأزرار) */
+    .hero-content {
+        max-width: 100%;
+        text-align: center; /* توسيط النصوص على الموبايل */
+        padding-top: 40px;
+        order: 2; /* وضع المحتوى تحت الصورة */
+        margin-bottom: 30px;
+    }
+    
+    h1 {
+        font-size: 2.2rem; /* تصغير حجم العنوان الرئيسي */
+        margin-bottom: 15px;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+        margin-bottom: 30px;
+        text-align: left; /* جعل الوصف يبقى على اليسار إذا كان طويلاً */
+    }
+    
+    .buttons-row {
+        flex-direction: column; /* جعل الأزرار فوق بعض */
+        gap: 15px;
+        align-items: center;
+        width: 100%;
+    }
+    .green-btn {
+        width: 80%;
+        text-align: center;
+    }
+
+    /* 3. Glowing Circles Adjustment */
+    .glowing-circle {
+        opacity: 0.2; /* تخفيف التوهج على الموبايل */
+    }
+    .circle-left {
+        width: 400px; height: 400px;
+        left: -200px;
+    }
+    .circle-right {
+        width: 400px; height: 400px;
+        right: -200px;
+        bottom: -100px;
+    }
+
+    /* 4. Bottom Text Adjustments */
+    .bottom-text {
+        position: static;
+        margin-top: 40px;
+        text-align: center;
+        width: 100%;
+        font-size: 0.9rem;
+    }
+    .next-slide {
+        position: static;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
+    }
+}
+
