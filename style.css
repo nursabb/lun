@@ -250,7 +250,7 @@ body {
     
     /* 1. Header & Navigation Adjustments: ترتيب العناصر على سطرين أو ثلاثة */
     .main-header {
-        padding: 10px 20px; 
+        padding: 30px 20px; 
         flex-wrap: wrap; 
         justify-content: space-between; 
         align-items: center;
@@ -375,4 +375,5 @@ body {
         width: 100%;
     }
 }
+
 
